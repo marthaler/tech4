@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!--suppress ALL -->
 <ui:composition xmlns="http://www.w3.org/1999/xhtml"
                 xmlns:ui="http://java.sun.com/jsf/facelets"
                 xmlns:h="http://java.sun.com/jsf/html"
@@ -23,45 +24,36 @@
                 <div class="page">
                     <div class="inset">
 
-
-
-                        <h:form id="form" >
-
-
-
-
+                        <h:form id="form">
 
                             <p:commandButton value="Requests bis jetzt: #{tech42013.counter}" ajax="false" id="counter" style="width:100%;"/>
 
-
-                            <p:spacer width="100" height="10" />
+                            <p:spacer width="100" height="10"/>
 
                             <h:panelGrid columns="2" id="loginPanel" width="100%">
 
-
                                 <p:inputText id="text" value="#{tech42013.kommentar}" ajax="false" style="width:90%;"/>
-
-
-                                <p:commandButton value="Statement Senden" ajax="false" update="tabelle" id="ajax" actionListener="#{tech42013.save}" style="width:100%;"/>
-
+                                <p:commandButton value="Statement Senden" ajax="false" update="tabelle" id="ajax"
+                                                 actionListener="#{tech42013.save}" style="width:100%;"/>
 
                             </h:panelGrid>
-                            <p:spacer width="100" height="10" />
+
+                            <p:spacer width="100" height="10"/>
+
                             <p:dataTable id="tabelle" var="car" value="#{tech42013.kommentare}">
 
                                 <p:column headerText="letzte 10 Statements">
-                                    <h:outputText value="#{car}" />
+                                    <h:outputText value="#{car}"/>
                                 </p:column>
 
                             </p:dataTable>
 
-                            <p:poll interval="5"
-                                     update="tabelle,counter" />
+                            <p:poll interval="5" update="tabelle,counter"/>
 
                         </h:form>
 
-
                     </div>
+
                     <br/>
                 </div>
             </div>
