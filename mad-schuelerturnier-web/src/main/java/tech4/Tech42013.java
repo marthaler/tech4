@@ -21,7 +21,7 @@ public class Tech42013 {
 
     public static LinkedList<String> kommentare = new LinkedList<String>();
 
-    public synchronized int updateCounter() {
+    public synchronized int getCounter() {
         Tech42013.counter = Tech42013.counter + 1;
         return Tech42013.counter;
     }
@@ -55,6 +55,5 @@ public class Tech42013 {
     public void setKommentar(String kommentar) {
         this.kommentar = kommentar;
     }
-
 
 }
