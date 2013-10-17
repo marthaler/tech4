@@ -18,7 +18,7 @@ public class Tech42013 {
 
     static int counter = 0;
 
-    private String pruefziffer = "  hallo_welt    ";
+    private String pruefziffer = "  git ist cool   ";
 
     private static Map<String,Integer> users = new HashMap<String,Integer>();
 
