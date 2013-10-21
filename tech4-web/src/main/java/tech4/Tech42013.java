@@ -78,9 +78,6 @@ public class Tech42013 {
 
         }
 
-
-        iPad
-
         Integer inte = users.get(sh);
 
         if(inte == null){
