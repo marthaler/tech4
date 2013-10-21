@@ -18,7 +18,7 @@ public class Tech42013 {
 
     static int counter = 0;
 
-    private String pruefziffer = "  git ist cool   ";
+    private String pruefziffer = "  version 0.0   ";
 
     private static Map<String,Integer> users = new HashMap<String,Integer>();
 
@@ -34,6 +34,20 @@ public class Tech42013 {
 
         agents.add(names);
 
+
+        if(names.toLowerCase().contains("samsung")){
+            sh = "Samsung";
+        }
+        else
+        if(names.contains("iPhone")){
+            sh = "IPhone";
+        }
+        else
+
+        if(names.contains("iPad")){
+            sh = "IPad";
+        }
+          else
         if(names.contains("Mac OS X")){
 
             if(names.contains("Chrome")){
@@ -48,7 +62,24 @@ public class Tech42013 {
                 sh = "Mac OS X: Unbekannt";
             }
 
+        }         else  if(names.contains("Windows")){
+
+            if(names.contains("Chrome")){
+                sh = "Windows: Chrome";
+            } else
+            if(names.contains("Safari")){
+                sh = "Windows: Safari";
+            } else
+            if(names.contains("Firefox")){
+                sh = "Windows: Firefox";
+            }  else{
+                sh = "Windows: Unbekannt";
+            }
+
         }
+
+
+        iPad
 
         Integer inte = users.get(sh);
 

@@ -51,15 +51,23 @@
                             <p:poll interval="5" update="tabelle,counter"/>
 
 
+                            <p:hotkey bind="enter" update="tabelle,counter" actionListener="#{tech42013.save}"/>
 
-                            <p:commandLink id="chartBtn" value="[x]" onclick="PF('dlg1').show();" style="text-decoration-color: black"/>
+
+                            <p:hotkey bind="ctrl+1" update="tabelle,counter" actionListener="#{tech42013.save}"/>
+
+                            <p:hotkey bind="ctrl+2" update="tabelle,counter" actionListener="#{tech42013.save}"/>
 
 
-                            <p:commandLink id="chartBtn2" value="[y]" onclick="PF('dlg2').show();" style="text-decoration-color: black"/>
-                            <p:dialog id="basicDialog2" header="Useragents " widgetVar="dlg2">
+                            <p:hotkey bind="ctrl+1" handler="PF('dlg1').show();" />
+
+                            <p:hotkey bind="ctrl+2" handler="PF('dlg2').show();" />
+
+
+                               <p:dialog id="basicDialog2" header="Verwendete Browser" widgetVar="dlg2">
 
                                 <p:dataTable var="car" value="#{tech42013.agents}">
-                                    <p:column headerText="Agents">
+                                    <p:column headerText="">
                                         <h:outputText value="#{car}" />
                                     </p:column>
 
@@ -69,8 +77,8 @@
 
                             <p:dialog id="basicDialog" header="Statistik" widgetVar="dlg1">
 
-                                <p:pieChart id="custom" value="#{tech42013.pieModel}" legendPosition="e" fill="false" showDataLabels="true"
-                                            title="User Agents" style="width:500px;height:400px" sliceMargin="5" diameter="300" />
+                                <p:pieChart id="custom" value="#{tech42013.pieModel}" legendPosition="e" fill="true" showDataLabels="true"
+                                            title="Verwendete Browser" style="width:600px;height:600px" sliceMargin="5" diameter="4300" />
                             </p:dialog>
 
                         </h:form>
