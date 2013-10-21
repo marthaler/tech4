@@ -24,7 +24,7 @@
                 <div class="page">
                     <div class="inset">
 
-                        <h:form id="form">
+                        <h:form id="form" onkeypress="if (event.keyCode == 13) { document.getElementById('form:ajax').click(); return false; }">
 
                             <p:commandButton value="Requests bis jetzt: #{tech42013.counter}" ajax="false" id="counter" style="width:100%;"/>
 
