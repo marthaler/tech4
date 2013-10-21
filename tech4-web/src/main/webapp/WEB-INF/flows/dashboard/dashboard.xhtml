@@ -34,7 +34,7 @@
 
                                 <p:inputText id="text" value="#{tech42013.kommentar}" ajax="false" style="width:90%;"/>
                                 <p:commandButton value="Statement Senden" ajax="false" update="tabelle" id="ajax"
-                                                 actionListener="#{tech42013.save}" style="width:100%;"/>
+                                                 actionListener="#{tech42013.save}" style="width:100%;" />
 
                             </h:panelGrid>
 
@@ -51,17 +51,12 @@
                             <p:poll interval="5" update="tabelle,counter"/>
 
 
-                            <p:hotkey bind="enter" update="tabelle,counter" actionListener="#{tech42013.save}"/>
+                            <p:defaultCommand target="#{tech42013.save}" />
 
 
-                            <p:hotkey bind="ctrl+1" update="tabelle,counter" actionListener="#{tech42013.save}"/>
+                            <p:hotkey bind="ctrl+alt+1" handler="PF('dlg1').show();" />
 
-                            <p:hotkey bind="ctrl+2" update="tabelle,counter" actionListener="#{tech42013.save}"/>
-
-
-                            <p:hotkey bind="ctrl+1" handler="PF('dlg1').show();" />
-
-                            <p:hotkey bind="ctrl+2" handler="PF('dlg2').show();" />
+                            <p:hotkey bind="ctrl+alt+2" handler="PF('dlg2').show();" />
 
 
                                <p:dialog id="basicDialog2" header="Verwendete Browser" widgetVar="dlg2">
