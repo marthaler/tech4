@@ -18,7 +18,7 @@ public class Tech42013 {
 
     static int counter = 0;
 
-    private String pruefziffer = "  version 0.0   ";
+    private String pruefziffer = "  42   ";
 
     private static Map<String,Integer> users = new HashMap<String,Integer>();
 
