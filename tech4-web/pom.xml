@@ -122,6 +122,12 @@
             <version>${commons-fileupload.version}</version>
         </dependency>
 
+        <dependency>
+            <groupId>org.primefaces.themes</groupId>
+            <artifactId>all-themes</artifactId>
+            <version>1.0.10</version>
+        </dependency>
+
 
     </dependencies>
 

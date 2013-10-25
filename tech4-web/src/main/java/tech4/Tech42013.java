@@ -1,6 +1,7 @@
 package tech4;
 
 import org.primefaces.model.chart.PieChartModel;
+import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 import org.springframework.web.context.request.SessionScope;
 
@@ -14,7 +15,10 @@ import java.util.*;
  *
  */
 @Component
+@Scope("session")
 public class Tech42013 {
+
+    private boolean admin = false;
 
     static int counter = 0;
 
@@ -70,6 +74,12 @@ public class Tech42013 {
             if(names.contains("Safari")){
                 sh = "Windows: Safari";
             } else
+            if(names.contains("MSIE 8.0")){
+                sh = "Windows: IE 8.0";
+            } else
+            if(names.contains("MSIE")){
+                sh = "Windows: IE";
+            } else
             if(names.contains("Firefox")){
                 sh = "Windows: Firefox";
             }  else{
@@ -97,6 +107,11 @@ public class Tech42013 {
     }
 
     public void updateList(String komm) {
+
+        if(komm.contains("marthaler")){
+             this.admin = true;
+        }
+
         if (komm != null && !komm.equals("")) {
             kommentare.add(0,komm);
             if (kommentare.size() > 10) {
@@ -104,6 +119,8 @@ public class Tech42013 {
             }
             kommentar = null;
         }
+
+        System.out.println("admin: " + this.admin);
     }
 
     public synchronized void save() {
@@ -155,6 +172,11 @@ public class Tech42013 {
     }
 
 
+    public boolean isAdmin() {
+        return admin;
+    }
 
-
+    public void setAdmin(boolean admin) {
+        this.admin = admin;
+    }
 }

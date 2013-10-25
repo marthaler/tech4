@@ -24,7 +24,7 @@
                 <div class="page">
                     <div class="inset">
 
-                        <h:form id="form" onkeypress="if (event.keyCode == 13) { document.getElementById('form:ajax').click(); return false; }">
+                        <h:form id="form" onkeypress="if (event.keyCode == 13) { document.getElementById('form:ajax').click(); return true; }">
 
                             <p:commandButton value="Requests bis jetzt: #{tech42013.counter}" ajax="false" id="counter" style="width:100%;"/>
 
@@ -51,13 +51,23 @@
                             <p:poll interval="5" update="tabelle,counter"/>
 
 
-
-                            <p:hotkey bind="ctrl+alt+1" handler="PF('dlg1').show();" />
-
-                            <p:hotkey bind="ctrl+alt+2" handler="PF('dlg2').show();" />
+                              <br/>
 
 
-                               <p:dialog id="basicDialog2" header="Verwendete Browser" widgetVar="dlg2">
+                            <h:panelGrid columns="3" id="loginPane2l" width="100%" rendered="#{tech42013.admin}">
+
+                                <p:commandButton actionListener="#{tech42013.save}" value="Statistiken" ajax="true" onclick="PF('dlg1').show();" style="width:100%;" />
+
+                                <p:commandButton actionListener="#{tech42013.save}" value="User Agents" ajax="true" onclick="PF('dlg2').show();" style="width:100%;" />
+
+                                <p:commandButton actionListener="#{tech42013.save}" value="Prüfziffer" ajax="true" onclick="PF('dlg3').show();" style="width:100%;" />
+
+
+                            </h:panelGrid>
+
+
+
+                            <p:dialog id="basicDialog2" header="Verwendete Browser" widgetVar="dlg2">
 
                                 <p:dataTable var="car" value="#{tech42013.agents}">
                                     <p:column headerText="">
@@ -68,10 +78,21 @@
                                 </p:dataTable>
                             </p:dialog>
 
+
+                            <p:dialog id="basicDialog3" header="" widgetVar="dlg3">
+
+
+                                <h1>
+                                        <h:outputText value="Prüfziffer: #{tech42013.pruefziffer}" />
+
+                                </h1>
+
+                            </p:dialog>
+
                             <p:dialog id="basicDialog" header="Statistik" widgetVar="dlg1">
 
                                 <p:pieChart id="custom" value="#{tech42013.pieModel}" legendPosition="e" fill="true" showDataLabels="true"
-                                            title="Verwendete Browser" style="width:600px;height:600px" sliceMargin="5" diameter="4300" />
+                                            title="Verwendete Browser" style="width:600px;height:600px" sliceMargin="5" diameter="430" />
                             </p:dialog>
 
                         </h:form>
