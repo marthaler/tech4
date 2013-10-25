@@ -23,13 +23,23 @@ public class Tech42013 implements Serializable{
 
     static int counter = 0;
 
-    private String pruefziffer = "  42   ";
+    static int sessionCounter = 0;
+
+    private String pruefziffer = "  ...   ";
 
     private static Map<String,Integer> users = new HashMap<String,Integer>();
 
     private static Set<String> agents = new HashSet<String>();
 
     public static LinkedList<String> kommentare = new LinkedList<String>();
+
+    public Tech42013(){
+        sessionCounter = sessionCounter + 1;
+    }
+
+    public int getSessionCounter(){
+        return sessionCounter;
+    }
 
     public synchronized int getCounter() {
         HttpServletRequest request = (HttpServletRequest) FacesContext.getCurrentInstance().getExternalContext().getRequest();

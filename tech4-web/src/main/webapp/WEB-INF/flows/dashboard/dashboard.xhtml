@@ -24,15 +24,22 @@
                 <div class="page">
                     <div class="inset">
 
-                        <h:form id="form" onkeypress="if (event.keyCode == 13) { document.getElementById('form:ajax').click(); return true; }">
+                        <h:form id="form">
 
-                            <p:commandButton value="Requests bis jetzt: #{tech42013.counter}" ajax="false" id="counter" style="width:100%;"/>
+
+                            <h:panelGrid columns="2" id="loginPane2ls" width="100%">
+                                <p:commandButton value="Requests bis jetzt: #{tech42013.counter}" ajax="false" id="counter" style="width:100%;"/>
+                                <p:commandButton value="Sessions bis jetzt: #{tech42013.sessionCounter}" ajax="false" id="counter" style="width:100%;"/>
+
+                            </h:panelGrid>
+
+
 
                             <p:spacer width="100" height="10"/>
 
                             <h:panelGrid columns="2" id="loginPanel" width="100%">
 
-                                <p:inputText id="text" value="#{tech42013.kommentar}" ajax="false" style="width:90%;"/>
+                                <p:inputText id="text" value="#{tech42013.kommentar}" ajax="false" style="width:90%;" onkeypress="if (event.keyCode == 13) { document.getElementById('form:ajax').click(); return true; }"/>
                                 <p:commandButton value="Statement Senden" ajax="false" update="tabelle" id="ajax"
                                                  actionListener="#{tech42013.save}" style="width:100%;" />
 
