@@ -8,6 +8,7 @@ import org.springframework.web.context.request.SessionScope;
 import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
 import javax.servlet.http.HttpServletRequest;
+import java.io.Serializable;
 import java.util.*;
 
 /**
@@ -16,7 +17,7 @@ import java.util.*;
  */
 @Component
 @Scope("session")
-public class Tech42013 {
+public class Tech42013 implements Serializable{
 
     private boolean admin = false;
 
