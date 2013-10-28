@@ -28,8 +28,8 @@
 
 
                             <h:panelGrid columns="2" id="loginPane2ls" width="100%">
-                                <p:commandButton value="Requests bis jetzt: #{tech42013.counter}" ajax="false" id="counter" style="width:100%;"/>
-                                <p:commandButton value="Sessions bis jetzt: #{tech42013.sessionCounter}" ajax="false" id="counter" style="width:100%;"/>
+                                <p:commandButton value="Requests bis jetzt: #{tech42013.counter}" ajax="false" id="counter" style="width:100%;" disabled="true"/>
+                                <p:commandButton value="Sessions bis jetzt: #{tech42013.sessionCounter}" ajax="false" id="counter2" style="width:100%;" disabled="true"/>
 
                             </h:panelGrid>
 
@@ -39,9 +39,11 @@
 
                             <h:panelGrid columns="2" id="loginPanel" width="100%">
 
-                                <p:inputText id="text" value="#{tech42013.kommentar}" ajax="false" style="width:90%;" onkeypress="if (event.keyCode == 13) { document.getElementById('form:ajax').click(); return true; }"/>
+                                <p:inputText id="text" value="#{tech42013.kommentar}" ajax="false" style="width:90%;" onkeypress="if (event.keyCode == 13) { document.getElementById('form:ajax').click(); return false; }"/>
                                 <p:commandButton value="Statement Senden" ajax="false" update="tabelle" id="ajax"
                                                  actionListener="#{tech42013.save}" style="width:100%;" />
+
+                                <p:watermark for="text" value="Ihr Cloud Statement hier ... und Enter oder --->" />
 
                             </h:panelGrid>
 

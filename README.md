@@ -1,4 +1,4 @@
-schuelerturnier
+Tech 4 Demo Application
 ===============
 
 Travis-CI: [![Build Status](https://secure.travis-ci.org/marthaler/schuelerturnier.png)](http://travis-ci.org/marthaler/schuelerturnier)
