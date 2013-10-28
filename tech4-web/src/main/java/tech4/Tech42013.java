@@ -50,8 +50,8 @@ public class Tech42013 implements Serializable{
         agents.add(names);
 
 
-        if(names.toLowerCase().contains("samsung")){
-            sh = "Samsung";
+        if(names.toLowerCase().contains("Android")){
+            sh = "Android";
         }
         else
         if(names.contains("iPhone")){
