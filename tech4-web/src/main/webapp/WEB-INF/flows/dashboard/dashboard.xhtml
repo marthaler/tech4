@@ -25,25 +25,22 @@
                     <div class="inset">
 
                         <h:form id="form">
-
-
                             <h:panelGrid columns="2" id="loginPane2ls" width="100%">
-                                <p:commandButton value="Requests bis jetzt: #{tech42013.counter}" ajax="false" id="counter" style="width:100%;" disabled="true"/>
-                                <p:commandButton value="Sessions bis jetzt: #{tech42013.sessionCounter}" ajax="false" id="counter2" style="width:100%;" disabled="true"/>
-
+                                <p:commandButton value="Requests bis jetzt: #{tech42013.counter}" ajax="false"
+                                                 id="counter" style="width:100%;" disabled="true"/>
+                                <p:commandButton value="Sessions bis jetzt: #{tech42013.sessionCounter}" ajax="false"
+                                                 id="counter2" style="width:100%;" disabled="true"/>
                             </h:panelGrid>
-
-
 
                             <p:spacer width="100" height="10"/>
 
                             <h:panelGrid columns="2" id="loginPanel" width="100%">
 
-                                <p:inputText id="text" value="#{tech42013.kommentar}" ajax="false" style="width:90%;" onkeypress="if (event.keyCode == 13) { document.getElementById('form:ajax').click(); return false; }"/>
+                                <p:inputText id="text" value="#{tech42013.kommentar}" ajax="false" style="width:90%;"
+                                             onkeypress="if (event.keyCode == 13) { document.getElementById('form:ajax').click(); return false; }"/>
                                 <p:commandButton value="Statement Senden" ajax="false" update="tabelle" id="ajax"
-                                                 actionListener="#{tech42013.save}" style="width:100%;" />
-
-                                <p:watermark for="text" value="Ihr Cloud Statement hier ... und Enter oder --->" />
+                                                 actionListener="#{tech42013.save}" style="width:100%;"/>
+                                <p:watermark for="text" value="Ihr Cloud Statement hier ... und Enter oder --->"/>
 
                             </h:panelGrid>
 
@@ -58,64 +55,37 @@
                             </p:dataTable>
 
                             <p:poll interval="5" update="tabelle,counter"/>
-
-
-                              <br/>
-
-
+                            <br/>
                             <h:panelGrid columns="3" id="loginPane2l" width="100%" rendered="#{tech42013.admin}">
-
-                                <p:commandButton actionListener="#{tech42013.save}" value="Statistiken" ajax="true" onclick="PF('dlg1').show();" style="width:100%;" />
-
-                                <p:commandButton actionListener="#{tech42013.save}" value="User Agents" ajax="true" onclick="PF('dlg2').show();" style="width:100%;" />
-
-                                <p:commandButton actionListener="#{tech42013.save}" value="Prüfziffer" ajax="true" onclick="PF('dlg3').show();" style="width:100%;" />
-
-
+                                <p:commandButton actionListener="#{tech42013.save}" value="Statistiken" ajax="true"
+                                                 onclick="PF('dlg1').show();" style="width:100%;"/>
+                                <p:commandButton actionListener="#{tech42013.save}" value="User Agents" ajax="true"
+                                                 onclick="PF('dlg2').show();" style="width:100%;"/>
+                                <p:commandButton actionListener="#{tech42013.save}" value="Prüfziffer" ajax="true"
+                                                 onclick="PF('dlg3').show();" style="width:100%;"/>
                             </h:panelGrid>
 
-
-
                             <p:dialog id="basicDialog2" header="Verwendete Browser" widgetVar="dlg2">
-
                                 <p:dataTable var="car" value="#{tech42013.agents}">
                                     <p:column headerText="">
-                                        <h:outputText value="#{car}" />
+                                        <h:outputText value="#{car}"/>
                                     </p:column>
-
-
                                 </p:dataTable>
                             </p:dialog>
 
-
                             <p:dialog id="basicDialog3" header="" widgetVar="dlg3">
-
-
                                 <h1>
-                                        <h:outputText value="Prüfziffer: #{tech42013.pruefziffer}" />
-
+                                    <h:outputText value="Prüfziffer: #{tech42013.pruefziffer}"/>
                                 </h1>
-
                             </p:dialog>
 
                             <p:dialog id="basicDialog" header="Statistik" widgetVar="dlg1">
-
-                                <p:pieChart id="custom" value="#{tech42013.pieModel}" legendPosition="e" fill="true" showDataLabels="true"
-                                            title="Verwendete Browser" style="width:600px;height:600px" sliceMargin="5" diameter="430" />
+                                <p:pieChart id="custom" value="#{tech42013.pieModel}" legendPosition="e" fill="true"
+                                            showDataLabels="true" title="Verwendete Browser"
+                                            style="width:600px;height:600px" sliceMargin="5" diameter="430"/>
                             </p:dialog>
-
                         </h:form>
-
-
-
-
-
-
-
-
-
                     </div>
-
                     <br/>
                 </div>
             </div>

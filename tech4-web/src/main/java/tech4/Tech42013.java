@@ -43,12 +43,10 @@ public class Tech42013 implements Serializable{
 
     public synchronized int getCounter() {
         HttpServletRequest request = (HttpServletRequest) FacesContext.getCurrentInstance().getExternalContext().getRequest();
-
         String names = request.getHeader("user-agent");
         String sh = "andere";
 
         agents.add(names);
-
 
         if(names.toLowerCase().contains("Android")){
             sh = "Android";
@@ -76,7 +74,6 @@ public class Tech42013 implements Serializable{
             }  else{
                 sh = "Mac OS X: Unbekannt";
             }
-
         }         else  if(names.contains("Windows")){
 
             if(names.contains("Chrome")){
@@ -107,8 +104,6 @@ public class Tech42013 implements Serializable{
             inte = inte +1;
             users.put(sh,inte);
         }
-
-
 
         // Mac OS + Safari
         // Mac OS + Chrome
