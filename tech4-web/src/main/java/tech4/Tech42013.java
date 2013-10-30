@@ -33,6 +33,8 @@ public class Tech42013 implements Serializable{
 
     public static LinkedList<String> kommentare = new LinkedList<String>();
 
+    public static LinkedList<String> kommentareAll = new LinkedList<String>();
+
     public Tech42013(){
         sessionCounter = sessionCounter + 1;
     }
@@ -112,14 +114,20 @@ public class Tech42013 implements Serializable{
         return Tech42013.counter;
     }
 
+
+
+
     public void updateList(String komm) {
 
         if(komm.contains("marthaler")){
              this.admin = true;
         }
 
+
+
         if (komm != null && !komm.equals("")) {
             kommentare.add(0,komm);
+            kommentareAll.add(0,komm);
             if (kommentare.size() > 10) {
                 kommentare.removeLast();
             }
@@ -137,6 +145,10 @@ public class Tech42013 implements Serializable{
 
     public List<String> getKommentare() {
         return (List<String>) kommentare;
+    }
+
+    public List<String> getKommentareAll() {
+        return (List<String>) kommentareAll;
     }
 
     private String kommentar = "";

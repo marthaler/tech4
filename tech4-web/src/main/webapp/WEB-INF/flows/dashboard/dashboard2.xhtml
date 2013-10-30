@@ -46,7 +46,7 @@
 
                             <p:spacer width="100" height="10"/>
 
-                            <p:dataTable id="tabelle" var="car" value="#{tech42013.kommentare}">
+                            <p:dataTable id="tabelle" var="car" value="#{tech42013.kommentareAll}">
 
                                 <p:column headerText="letzte 10 Statements">
                                     <h:outputText value="#{car}"/>
@@ -56,7 +56,7 @@
 
                             <p:poll interval="5" update="tabelle,counter"/>
                             <br/>
-                            <h:panelGrid columns="43" id="loginPane2l" width="100%" rendered="#{tech42013.admin}">
+                            <h:panelGrid columns="4" id="loginPane2l" width="100%" rendered="#{tech42013.admin}">
                                 <p:commandButton actionListener="#{tech42013.save}" value="Statistik" ajax="true"
                                                  onclick="PF('dlg1').show();" style="width:100%;"/>
                                 <p:commandButton actionListener="#{tech42013.save}" value="User Agents" ajax="true"
@@ -64,8 +64,8 @@
                                 <p:commandButton actionListener="#{tech42013.save}" value="Prüfziffer" ajax="true"
                                                  onclick="PF('dlg3').show();" style="width:100%;"/>
 
-                                <p:commandButton action="alle" value="Alle" ajax="false"
-                                                 style="width:100%;"/>
+                                <p:commandButton action="wenige" value="wenige" ajax="false"
+                                                  style="width:100%;"/>
                             </h:panelGrid>
 
                             <p:dialog id="basicDialog2" header="Verwendete Browser" widgetVar="dlg2">

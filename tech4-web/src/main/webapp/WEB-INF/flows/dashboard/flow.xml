@@ -5,6 +5,14 @@
       xsi:schemaLocation="http://www.springframework.org/schema/webflow http://www.springframework.org/schema/webflow/spring-webflow-2.0.xsd">
 
 
-    <view-state id="dashboard"/>
+    <view-state id="dashboard">
+        <transition on="alle" to="dashboard2"></transition>
+
+    </view-state>
+
+    <view-state id="dashboard2">
+        <transition on="wenige" to="dashboard2"></transition>
+
+    </view-state>
 
 </flow>
