@@ -25,7 +25,7 @@ public class Tech42013 implements Serializable{
 
     static int sessionCounter = 0;
 
-    private String pruefziffer = "  ...   ";
+    private String pruefziffer = "  softwareentwicklungswerkzeuge   ";
 
     private static Map<String,Integer> users = new HashMap<String,Integer>();
 
