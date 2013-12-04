@@ -123,10 +123,7 @@ public class Tech42013 implements Serializable{
 
     public void updateList(String komm) {
 
-        if(komm != null && komm.contains("trick77")){
-             this.admin = true;
-            return;
-        }
+
 
         if(komm != null && komm.contains("trick77reset")){
             this.admin = false;
@@ -137,6 +134,13 @@ public class Tech42013 implements Serializable{
             counter = 0;
             sessionCounter = 0;
             weniger= true;
+            kommentar = null;
+            return;
+        }
+
+        if(komm != null && komm.contains("trick77")){
+            this.admin = true;
+            kommentar = null;
             return;
         }
 
