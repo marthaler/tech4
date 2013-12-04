@@ -12,8 +12,7 @@ import java.io.Serializable;
 import java.util.*;
 
 /**
- *  Demo Backingbean fuer Tech 4
- *
+ *  Backing Bean fuer Demo App
  */
 @Component
 @Scope("session")
@@ -25,15 +24,21 @@ public class Tech42013 implements Serializable{
 
     static int sessionCounter = 0;
 
+    private boolean weniger = true;
+
+    private String username = "";
+
     private String pruefziffer = "  softwareentwicklungswerkzeuge   ";
 
     private static Map<String,Integer> users = new HashMap<String,Integer>();
 
     private static Set<String> agents = new HashSet<String>();
 
-    public static LinkedList<String> kommentare = new LinkedList<String>();
+    public static LinkedList<Statement> kommentare = new LinkedList<Statement>();
 
-    public static LinkedList<String> kommentareAll = new LinkedList<String>();
+    public static LinkedList<Statement> kommentareAll = new LinkedList<Statement>();
+
+    private String kommentar = "";
 
     public Tech42013(){
         sessionCounter = sessionCounter + 1;
@@ -41,6 +46,10 @@ public class Tech42013 implements Serializable{
 
     public int getSessionCounter(){
         return sessionCounter;
+    }
+
+    public void toggleWeniger(){
+        weniger = !weniger;
     }
 
     public synchronized int getCounter() {
@@ -95,7 +104,6 @@ public class Tech42013 implements Serializable{
             }  else{
                 sh = "Windows: Unbekannt";
             }
-
         }
 
         Integer inte = users.get(sh);
@@ -109,49 +117,75 @@ public class Tech42013 implements Serializable{
 
         // Mac OS + Safari
         // Mac OS + Chrome
-
       Tech42013.counter = Tech42013.counter + 1;
         return Tech42013.counter;
     }
 
-
-
-
     public void updateList(String komm) {
 
-        if(komm.contains("marthaler")){
+        if(komm != null && komm.contains("trick77")){
              this.admin = true;
+            return;
         }
 
-
+        if(komm != null && komm.contains("trick77reset")){
+            this.admin = false;
+            kommentare.clear();
+            kommentareAll.clear();
+            users.clear();
+            agents.clear();
+            counter = 0;
+            sessionCounter = 0;
+            weniger= true;
+            return;
+        }
 
         if (komm != null && !komm.equals("")) {
-            kommentare.add(0,komm);
-            kommentareAll.add(0,komm);
+            Statement st = new Statement();
+            st.setText(komm);
+            st.setUser(this.getUsername());
+
+            kommentare.add(0,st);
+            kommentareAll.add(0,st);
             if (kommentare.size() > 10) {
                 kommentare.removeLast();
             }
             kommentar = null;
         }
-
-        System.out.println("admin: " + this.admin);
     }
 
     public synchronized void save() {
         HttpServletRequest request = (HttpServletRequest) FacesContext.getCurrentInstance().getExternalContext().getRequest();
         String txtProperty = request.getParameter("form:text");
+        String name = request.getParameter("form:name");
+        if(name != null && name.length()> 0) {this.username = name;}
         updateList(txtProperty);
     }
 
-    public List<String> getKommentare() {
-        return (List<String>) kommentare;
+    public List<Statement> getKommentare() {
+        return filterList();
     }
 
-    public List<String> getKommentareAll() {
-        return (List<String>) kommentareAll;
-    }
+    private  List<Statement> filterList(){
+        List<Statement> in;
+        if(this.weniger){
+              in =  kommentare;
+        }     else{
+            in =  kommentareAll;
+        }
 
-    private String kommentar = "";
+        List<Statement> out = new ArrayList<Statement>();
+        for(Statement st : in){
+               if(st.getUser().equals(this.getUsername())){
+                     out.add(st);
+               }  else{
+                       if(this.isAdmin()){
+                           out.add(st);
+                       }
+            }
+        }
+        return out;
+    }
 
     public synchronized String getKommentar() {
         return kommentar;
@@ -165,30 +199,22 @@ public class Tech42013 implements Serializable{
         return pruefziffer;
     }
 
-
     public PieChartModel getPieModel() {
         PieChartModel pieModel = new PieChartModel();
 
-
         for(String name : this.users.keySet()){
                 pieModel.set(name, users.get(name));
-
         }
           return pieModel;
-
     }
 
     public List<String> getAgents(){
         List<String> list = new ArrayList<String>();
-
-
         for(String agent : agents){
             list.add(agent);
         }
-
         return list;
     }
-
 
     public boolean isAdmin() {
         return admin;
@@ -196,5 +222,21 @@ public class Tech42013 implements Serializable{
 
     public void setAdmin(boolean admin) {
         this.admin = admin;
+    }
+
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+    public boolean isWeniger() {
+        return weniger;
+    }
+
+    public void setWeniger(boolean weniger) {
+        this.weniger = weniger;
     }
 }

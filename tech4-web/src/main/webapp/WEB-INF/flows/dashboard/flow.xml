@@ -4,15 +4,18 @@
       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
       xsi:schemaLocation="http://www.springframework.org/schema/webflow http://www.springframework.org/schema/webflow/spring-webflow-2.0.xsd">
 
+    <view-state id="login">
+        <transition on="ok" to="dashboard"></transition>
+    </view-state>
 
     <view-state id="dashboard">
-        <transition on="alle" to="dashboard2"></transition>
-
+        <transition on="alle" to="dashboard">
+            <evaluate expression="tech42013.toggleWeniger()"></evaluate>
+        </transition>
+        <transition on="wenige" to="dashboard">
+            <evaluate expression="tech42013.toggleWeniger()"></evaluate>
+        </transition>
     </view-state>
 
-    <view-state id="dashboard2">
-        <transition on="wenige" to="dashboard2"></transition>
-
-    </view-state>
 
 </flow>

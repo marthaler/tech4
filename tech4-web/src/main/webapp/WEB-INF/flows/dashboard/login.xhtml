@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!--suppress ALL -->
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:p="http://primefaces.org/ui"
+                template="../../layouts/100.xhtml">
+
+
+    <ui:define name="main">
+        <div id="main">
+            <div class="page_margins">
+                <div class="page">
+                    <h2 class="left">
+                        Hallo Dev-Day
+                    </h2>
+                </div>
+            </div>
+            <div class="page_margins">
+                <div class="page">
+                    <div class="inset">
+
+                        <h:form id="form">
+
+                            <p:spacer width="100" height="10"/>
+
+                            <h:panelGrid columns="1" id="loginPanel" width="100%">
+
+                            <p:inputText id="name" value="#{tech42013.username}" ajax="false" style="width:100%;" onkeypress="if (event.keyCode == 13) { document.getElementById('form:ok').click(); return false; }"/>
+                            <p:commandButton id="ok" action="ok" value="Anmelden" ajax="false" update="tabelle"  actionListener="#{tech42013.save}" style="width:100%;"/>
+                            </h:panelGrid>
+
+                            <p:watermark for="name" value="Ihren Namen hier..."/>
+                        </h:form>
+                    </div>
+                    <br/>
+                </div>
+            </div>
+        </div>
+    </ui:define>
+
+</ui:composition>
