@@ -4,6 +4,7 @@
                 xmlns:ui="http://java.sun.com/jsf/facelets"
                 xmlns:h="http://java.sun.com/jsf/html"
                 xmlns:p="http://primefaces.org/ui"
+                xmlns:f="http://java.sun.com/jsf/core"
                 template="../../layouts/100.xhtml">
 
 
@@ -21,16 +22,19 @@
                     <div class="inset">
 
                         <h:form id="form">
-
+                            <p:messages/>
                             <p:spacer width="100" height="10"/>
 
                             <h:panelGrid columns="1" id="loginPanel" width="100%">
 
-                            <p:inputText id="name" value="#{tech42013.username}" ajax="false" style="width:100%;" onkeypress="if (event.keyCode == 13) { document.getElementById('form:ok').click(); return false; }"/>
+                            <p:inputText id="name" value="#{tech42013.username}" ajax="false" style="width:100%;" onkeypress="if (event.keyCode == 13) { document.getElementById('form:ok').click(); return false; }">
+                                <f:validateLength minimum="3" maximum="10"/>
+                            </p:inputText>
+
                             <p:commandButton id="ok" action="ok" value="Anmelden" ajax="false" update="tabelle"  actionListener="#{tech42013.save}" style="width:100%;"/>
                             </h:panelGrid>
 
-                            <p:watermark for="name" value="Ihren Namen hier..."/>
+                            <p:watermark for="name" value="Ihren Namen hier... (mindestens 3 Zeichen)"/>
                         </h:form>
                     </div>
                     <br/>
